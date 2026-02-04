@@ -1,0 +1,53 @@
+[tool.pdm.resolution]
+allow-prereleases = true
+
+[[tool.pdm.source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[project]
+# PEP 621 project metadata
+# See https://www.python.org/dev/peps/pep-0621/
+name = "TW3MM"
+version = "0.9.2"
+description = "Mod Manager for The Witcher 3"
+authors = [
+    { name = "Stefan Kostic", email = "stekos@live.com" },
+    { name = "Christian Sdunek", email = "me@systemcluster.me" },
+    { name = "Adam Sunderman", email = "amsunderman@gmail.com" },
+    { name = "Henry Hsieh", email = "r901042004@yahoo.com.tw" },
+    { name = "George Burduli", email = "burduli01@pm.me" },
+]
+dependencies = [
+    "fasteners>=0.18",
+    "PySide2==5.15.2.1",
+    "watchdog>=2.2.1",
+    "charset-normalizer>=3.0.1",
+    "patool>=1.12; sys_platform != \"win32\"",
+    "pyunpack>=0.2.1; sys_platform != \"win32\"",
+    "easyprocess>=0.3; sys_platform != \"win32\"",
+]
+
+readme = "README.md"
+license = { text = "BSD-2-Clause" }
+requires-python = ">=3.10, <3.11"
+
+[project.urls]
+Repository = "https://github.com/Systemcluster/The-Witcher-3-Mod-manager.git"
+NexusMods = "https://www.nexusmods.com/witcher3/mods/2678"
+
+[tool.pdm]
+distribution = false
+
+[dependency-groups]
+dev = [
+    "pylint",
+    "mypy",
+    "cx-freeze<6.13,>=6.11",
+    "autopep8",
+]
+
+[tool.pdm.scripts]
+start = "python -m main"
+build-win = "python setup.py build_exe"

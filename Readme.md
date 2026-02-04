@@ -14,18 +14,26 @@ See the [Nexus Mods page](https://www.nexusmods.com/witcher3/mods/2678) for rele
 
 ### Release Versions (Windows)
 
-Download and unpack the latest release from Nexus Mods or from the GitHub releases. If you are upgrading from version 0.6 or later, directly overwrite the previous installation. Existing configuration files wll be searched in the same directory as the executable first, in `Documents\The Witcher 3 Mod Manager` second.
+Download and unpack the latest release from Nexus Mods or from the GitHub releases. If you are upgrading from version 0.6 or later, directly overwrite the previous installation. Existing configuration files will be searched in the same directory as the executable first, in `Documents\The Witcher 3 Mod Manager` second.
 
 On the first run, if no configuration can be found, configuration files will be created under `Documents\The Witcher 3 Mod Manager`. They can be freely relocated between the two searched locations as preferred.
 
 ### Python (Windows and Linux)
 
-Download the source and install the requirements with `pipenv install --python 3`. Python 3.7+ and Pipenv have to be installed. Afterwards run with `pipenv run python main.py`.
+The project uses [PDM](https://pdm-project.org/en/latest/) for dependency management. Requires Python 3.10.
 
-On Linux, the configuration files will be created in `~/.config/TheWitcher3ModManager`, and `wine` has to be available to run Script Merger.
+1. Install PDM with [recommended installation method](https://pdm-project.org/en/latest/#recommended-installation-method)
+2. Clone the repository
+3. Install dependencies: `pdm install --prod`
+4. Run the application: `pdm run start`
 
-### Build Developed Versions (Windows)
+On Linux:
+- Configuration files are created in `~/.config/TheWitcher3ModManager`
+- `wine` must be available to run Script Merger
+- Consider using `pdm run` prefix for all commands
 
-Download the source and install the requirements with `pipenv install --python 3 --dev`. Python 3.7+ and Pipenv have to be installed. Afterwards run with `pipenv run python setup.py build_exe`.
+### Build Release (Windows)
 
-The files will be created in `build/exe.[platform identifier].[python version]`.
+1. Install dependencies with development tools: `pdm install`
+2. Build executable: `pdm run build-win`
+3. Find files in `build/exe.[platform identifier].[python version]`
